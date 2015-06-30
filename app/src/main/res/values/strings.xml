@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">simpletodo</string>
+
+    <string name="hello_world">Hello livecode.tv!</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_test">Click Me!</string>
+</resources>
