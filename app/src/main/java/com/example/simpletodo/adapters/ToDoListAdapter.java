@@ -1,5 +1,6 @@
 package com.example.simpletodo.adapters;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.simpletodo.R;
+import com.example.simpletodo.activities.DetailsActivity;
 import com.example.simpletodo.models.ToDoTitle;
 
 import java.util.List;
@@ -50,7 +52,11 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(v.getContext(), "Click", Toast.LENGTH_SHORT).show();
+            int position = getAdapterPosition();
+            Toast.makeText(v.getContext(), position + "", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+            intent.putExtra("ID", titles.get(position).getId());
+            v.getContext().startActivity(intent);
         }
     }
 
