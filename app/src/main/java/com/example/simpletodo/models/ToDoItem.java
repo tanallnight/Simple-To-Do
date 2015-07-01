@@ -29,4 +29,9 @@ public class ToDoItem {
     public void setIsChecked(boolean isChecked) {
         this.isChecked = isChecked;
     }
+
+    @Override
+    public String toString() {
+        return id + " " + message + " " + isChecked;
+    }
 }
