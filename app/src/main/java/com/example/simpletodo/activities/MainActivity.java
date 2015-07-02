@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         databaseManager = new DatabaseManager(this);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        adapter = new ToDoListAdapter(databaseManager.getAllTitles());
+        adapter = new ToDoListAdapter(databaseManager.getAllTitles(), databaseManager);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText editText = new EditText(this);
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
         editText.setHint("Grocery List");
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setTitle("Add new Objective")

@@ -45,13 +45,16 @@ public class ToDoInfoListAdapter extends RecyclerView.Adapter<ToDoInfoListAdapte
         return toDoItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements CompoundButton.OnCheckedChangeListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements CompoundButton.OnCheckedChangeListener, View.OnLongClickListener {
 
         private TextView message;
         private CheckBox checkBox;
+        private View parent;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            parent = itemView.findViewById(R.id.parent);
+            parent.setOnLongClickListener(this);
             message = (TextView) itemView.findViewById(R.id.text);
             checkBox = (CheckBox) itemView.findViewById(R.id.checkbox);
             checkBox.setOnCheckedChangeListener(this);
@@ -62,6 +65,15 @@ public class ToDoInfoListAdapter extends RecyclerView.Adapter<ToDoInfoListAdapte
             int position = getAdapterPosition();
             toDoItems.get(position).setIsChecked(isChecked);
             databaseManager.changeChecked(toDoItems.get(position), isChecked);
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            int position = getAdapterPosition();
+            databaseManager.deleteInfo(toDoItems.get(position));
+            setData(databaseManager.getInfo(toDoItems.get(0).getId()));
+            notifyDataSetChanged();
+            return true;
         }
     }
 

@@ -97,6 +97,10 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public void deleteTitle(int id) {
         getWritableDatabase().delete(TABLE_TITLE, ID + " = ?", new String[]{String.valueOf(id)});
+        List<ToDoItem> items = getInfo(id);
+        for (ToDoItem toDoItem : items) {
+            deleteInfo(toDoItem);
+        }
     }
 
     public void addInfo(ToDoItem toDoItem) {
