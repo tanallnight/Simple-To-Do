@@ -5,8 +5,15 @@
     tools:context=".MainActivity">
 
     <item
+        android:id="@+id/action_talk"
+        android:title="TTS"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_mic"/>
+
+    <item
         android:id="@+id/action_add"
         android:title="@string/action_add"
         app:showAsAction="always"
         android:icon="@drawable/ic_action_add"/>
+
 </menu>
