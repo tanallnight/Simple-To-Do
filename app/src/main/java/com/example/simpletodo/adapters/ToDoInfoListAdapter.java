@@ -36,6 +36,10 @@ public class ToDoInfoListAdapter extends RecyclerView.Adapter<ToDoInfoListAdapte
         holder.checkBox.setChecked(toDoItems.get(position).isChecked());
     }
 
+    public void setData(List<ToDoItem> items) {
+        this.toDoItems = items;
+    }
+
     @Override
     public int getItemCount() {
         return toDoItems.size();
@@ -56,6 +60,7 @@ public class ToDoInfoListAdapter extends RecyclerView.Adapter<ToDoInfoListAdapte
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             int position = getAdapterPosition();
+            toDoItems.get(position).setIsChecked(isChecked);
             databaseManager.changeChecked(toDoItems.get(position), isChecked);
         }
     }

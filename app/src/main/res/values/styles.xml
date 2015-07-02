@@ -1,4 +1,9 @@
 <resources>
 
+    <style name="TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
